@@ -2,6 +2,7 @@ using EssentialTools.Models;
 using System;
 
 using Unity;
+using Unity.Injection;
 
 namespace EssentialTools
 {
@@ -43,7 +44,17 @@ namespace EssentialTools
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            // Resource : http://www.tutorialsteacher.com/ioc/constructor-injection-using-unity-container
+
+            // Simple DI
             container.RegisterType<IValueCalculator, LinqValueCalculator>();
+
+            // DI with property value set
+            //container.RegisterType<IDiscountHelper, DefaultDiscountHelper>(new InjectionProperty("DiscountSize", 50M));
+
+            // DI with constructor parameter
+            container.RegisterType<IDiscountHelper, DefaultDiscountHelper>(new InjectionConstructor(100M));
         }
     }
 }
