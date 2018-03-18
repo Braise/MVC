@@ -1,3 +1,5 @@
+using SportStoreDomain.Abstract;
+using SportStoreDomain.Concrete;
 using System;
 
 using Unity;
@@ -42,6 +44,8 @@ namespace SportStoreWebUI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            container.RegisterType<IProductRepository, EFProductRepository>();
         }
     }
 }
