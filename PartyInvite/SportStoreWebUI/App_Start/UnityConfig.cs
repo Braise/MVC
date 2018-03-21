@@ -3,6 +3,7 @@ using SportStoreDomain.Concrete;
 using System;
 
 using Unity;
+using Unity.Injection;
 
 namespace SportStoreWebUI
 {
@@ -46,6 +47,9 @@ namespace SportStoreWebUI
             // container.RegisterType<IProductRepository, ProductRepository>();
 
             container.RegisterType<IProductRepository, EFProductRepository>();
+
+            EmailSettings emailSettings = new EmailSettings();
+            container.RegisterType<IOrderProcessor, EmailOrderProcessor>(new InjectionConstructor(emailSettings));
         }
     }
 }
