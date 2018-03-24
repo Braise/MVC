@@ -48,7 +48,7 @@ namespace SportStoreWebUI
 
             container.RegisterType<IProductRepository, EFProductRepository>();
 
-            EmailSettings emailSettings = new EmailSettings();
+            EmailSettings emailSettings = new EmailSettings { WriteAsFile = false};
             container.RegisterType<IOrderProcessor, EmailOrderProcessor>(new InjectionConstructor(emailSettings));
         }
     }
