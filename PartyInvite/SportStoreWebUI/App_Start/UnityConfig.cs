@@ -1,5 +1,7 @@
 using SportStoreDomain.Abstract;
 using SportStoreDomain.Concrete;
+using SportStoreWebUI.Infrastructure.Abstract;
+using SportStoreWebUI.Infrastructure.Concrete;
 using System;
 
 using Unity;
@@ -50,6 +52,8 @@ namespace SportStoreWebUI
 
             EmailSettings emailSettings = new EmailSettings { WriteAsFile = false};
             container.RegisterType<IOrderProcessor, EmailOrderProcessor>(new InjectionConstructor(emailSettings));
+
+            container.RegisterType<IAuthProvider, FormAuthProvider>();
         }
     }
 }
